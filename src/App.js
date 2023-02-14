@@ -10,18 +10,8 @@ function App() {
   return (
     <div className="App">
       <Heading />
-      <h1>메인입니다</h1>
-      <ul style={{ display: "flex", justifyContent: "space-between" }}>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/list">list</Link>
-        </li>
-        <li>
-          <Link to="/upload">upload</Link>
-        </li>
-      </ul>
+      <h1>고정</h1>
+
       <Routes>
         <Route
           path="/list"
