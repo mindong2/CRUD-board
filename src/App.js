@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="App">
       <Heading />
-      <h1>고정</h1>
 
       <Routes>
         <Route

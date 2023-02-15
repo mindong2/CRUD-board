@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { UploadDiv, UploadForm, UploadButtonDiv } from "../Style/UploadCSS";
 function Upload({ ContentList, setContentList }) {
   const [Content, setContent] = useState("");
 
@@ -10,22 +10,37 @@ function Upload({ ContentList, setContentList }) {
     setContent("");
   };
   return (
-    <>
-      <input
-        type="text"
-        value={Content}
-        onChange={(e) => {
-          setContent(e.currentTarget.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          onSubmit(Content);
-        }}
-      >
-        제출
-      </button>
-    </>
+    <UploadDiv>
+      <UploadForm>
+        <label htmlFor="title">제목</label>
+        <input
+          id="title"
+          type="text"
+          value={Content}
+          onChange={(e) => {
+            setContent(e.currentTarget.value);
+          }}
+        />
+        <label htmlFor="content">내용</label>
+        <textarea
+          id="content"
+          type="text"
+          value={Content}
+          onChange={(e) => {
+            setContent(e.currentTarget.value);
+          }}
+        />
+        <UploadButtonDiv>
+          <button
+            onClick={() => {
+              onSubmit(Content);
+            }}
+          >
+            제출
+          </button>
+        </UploadButtonDiv>
+      </UploadForm>
+    </UploadDiv>
   );
 }
 
