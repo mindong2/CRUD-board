@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Navbar, Nav } from "react-bootstrap";
 
-function Heading() {
+const Heading = () => {
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
@@ -11,9 +11,6 @@ function Heading() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
-              Home
-            </Link>
-            <Link to="/list" style={{ color: "#fff", textDecoration: "none" }}>
               List
             </Link>
             <Link to="upload" style={{ color: "#fff", textDecoration: "none" }}>
@@ -24,6 +21,6 @@ function Heading() {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default Heading;
