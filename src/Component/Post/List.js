@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { ListParent } from '../../Style/ListCSS';
 const List = () => {
   let [postList, setPostList] = useState([]);
   useEffect(() => {
@@ -15,14 +16,20 @@ const List = () => {
   }, []);
   return (
     <>
-      {postList.map((post, i) => {
-        return (
-          <div key={i}>
-            <h3>제목 : {post.title} </h3>
-            <p>내용 : {post.content}</p>
-          </div>
-        );
-      })}
+      <ListParent>
+        <ul>
+          {postList.map((post, i) => {
+            return (
+                <li key={i}>
+                  <Link to={`/detail/:id`}>
+                    <h3>제목 : {post.title} </h3>
+                    <p>내용 : {post.content}</p>
+                  </Link>
+                </li>
+              );
+            })}
+        </ul>
+      </ListParent>
     </>
   );
 };

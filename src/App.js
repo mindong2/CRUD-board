@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Heading from "./Component/Heading";
 import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
-
+import Detail from "./Component/Detail"
 const App = () => {
   const [ContentList, setContentList] = useState([]);
 
@@ -24,7 +24,15 @@ const App = () => {
             <Upload ContentList={ContentList} setContentList={setContentList} />
           }
         ></Route>
+
+        <Route
+          path="/detail/:id"
+          element={
+            <Detail></Detail>
+          }
+        ></Route>
         {/* <Route path="*" element={<div>404 알수없는 페이지</div>}></Route> */}
+      
       </Routes>
     </div>
   );
