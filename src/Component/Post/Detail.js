@@ -24,8 +24,6 @@ const Detail = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {}, [postInfo]);
-
   return (
     <>
       {flag ? (

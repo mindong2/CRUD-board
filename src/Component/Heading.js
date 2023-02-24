@@ -10,7 +10,7 @@ const Heading = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
+            <Link to="/" style={{ color: "#fff", textDecoration: "none", paddingRight: "10px" }}>
               List
             </Link>
             <Link to="upload" style={{ color: "#fff", textDecoration: "none" }}>
