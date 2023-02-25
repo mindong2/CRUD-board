@@ -4,6 +4,7 @@ import Heading from "./Component/Heading";
 import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
 import Detail from "./Component/Post/Detail";
+import Edit from "./Component/Post/Edit";
 const App = () => {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/upload" element={<Upload />}></Route>
 
         <Route path="/detail/:postNum" element={<Detail />}></Route>
+        <Route path="/edit/:postNum" element={<Edit />}></Route>
         {/* <Route path="*" element={<div>404 알수없는 페이지</div>}></Route> */}
       </Routes>
     </div>

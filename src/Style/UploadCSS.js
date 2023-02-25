@@ -11,8 +11,9 @@ const UploadForm = styled.form`
   width: 80%;
   display: flex;
   flex-direction: column;
-  input {
+  #title {
     width: 100%;
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #c6c6c6;
