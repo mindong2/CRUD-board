@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser, clearUser } from "./Reducer/userSlice";
+import firebase from "./firebase";
 import Heading from "./Component/Heading";
 import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
@@ -8,6 +11,19 @@ import Edit from "./Component/Post/Edit";
 import Login from "./Component/User/Login";
 import Register from "./Component/User/Register";
 const App = () => {
+  const dispatch = useDispatch();
+
+  // firebase 로그인 하지 않았을때 userInfo -> null 반대는 userInfo 보여줌
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((userInfo) => {
+      if (userInfo !== null) {
+        dispatch(loginUser(userInfo.multiFactor.user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
       <Heading />

@@ -22,8 +22,8 @@ const List = () => {
             return (
               <li key={idx}>
                 <Link to={`/detail/${post.postNum}`}>
-                  <h4>{post.postNum}</h4>
                   <h3>제목 : {post.title} </h3>
+                  <h5>작성자: {post.author.displayName}</h5>
                   <p>내용 : {post.content}</p>
                 </Link>
               </li>

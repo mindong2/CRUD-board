@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
 const Detail = () => {
   let [postInfo, setPostInfo] = useState({});
   let [flag, setFlag] = useState(false);
   let params = useParams();
   let navigate = useNavigate();
+  const user = useSelector((state) => state.user);
   const DeleteHandler = () => {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
       let body = {
@@ -56,14 +57,16 @@ const Detail = () => {
             />
           ) : null}
           <p>{postInfo.content}</p>
-          <div className="btnDiv">
-            <Link to={`/edit/${postInfo.postNum}`}>
-              <button className="edit">수정</button>
-            </Link>
-            <button className="delete" onClick={() => DeleteHandler()}>
-              삭제
-            </button>
-          </div>
+          {user.accessToken && (
+            <div className="btnDiv">
+              <Link to={`/edit/${postInfo.postNum}`}>
+                <button className="edit">수정</button>
+              </Link>
+              <button className="delete" onClick={() => DeleteHandler()}>
+                삭제
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <Spinner />

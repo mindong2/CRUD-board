@@ -10,7 +10,8 @@ const Register = () => {
   const [Password, setPassword] = useState("");
   const [PWConfirm, setPWConfirm] = useState("");
   const [Flag, setFlag] = useState(false);
-
+  const [nameChk, setNameChk] = useState(false);
+  const [nameChkResult, setNameChkResult] = useState("");
   const navigate = useNavigate();
 
   const registerFn = async (e) => {
@@ -22,7 +23,9 @@ const Register = () => {
     if (Password !== PWConfirm) {
       return alert("비밀번호와 비밀번호 확인 값은 같아야 합니다.");
     }
-
+    if (!nameChk) {
+      return alert("닉네임 중복검사를 해주세요");
+    }
     let createdUser = await firebase
       .auth()
       .createUserWithEmailAndPassword(Email, Password);
@@ -30,7 +33,7 @@ const Register = () => {
     await createdUser.user.updateProfile({
       displayName: Name,
     });
-    console.log(createdUser.user);
+
     let body = {
       email: createdUser.user.multiFactor.user.email,
       displayName: createdUser.user.multiFactor.user.displayName,
@@ -47,19 +50,49 @@ const Register = () => {
     });
   };
 
+  const nameChkFn = (e) => {
+    e.preventDefault();
+    if (!Name) {
+      alert("닉네임을 입력해주세요.");
+    }
+    let body = {
+      displayName: Name,
+    };
+    axios
+      .post("/api/user/nameChk", body)
+      .then((res) => {
+        if (res.data.success) {
+          if (res.data.checkVal) {
+            setNameChkResult("사용가능한 닉네임입니다.");
+            setNameChk(true);
+          } else {
+            setNameChkResult("이미 사용중인 닉네임입니다.");
+          }
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <LoginInputDiv>
       <form>
         <div className="input_box">
-          <label htmlFor="name">이름</label>
+          <label htmlFor="name">닉네임</label>
           <input
             type="text"
             id="name"
             value={Name}
+            readOnly={nameChk}
             onChange={(e) => {
               setName(e.currentTarget.value);
             }}
           />
+          <div className="btn_area">
+            <button onClick={(e) => nameChkFn(e)} style={{ width: "100%" }}>
+              닉네임 중복검사
+            </button>
+          </div>
+          <p className="NameChkResult">{nameChkResult}</p>
         </div>
         <div className="input_box">
           <label htmlFor="email">이메일</label>
