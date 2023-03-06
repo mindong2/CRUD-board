@@ -21,7 +21,7 @@ const List = () => {
           {postList.map((post, idx) => {
             return (
               <li key={idx}>
-                <Link to={`/detail/${post.postNum}`}>
+                <Link to={`/post/${post.postNum}`}>
                   <h3>제목 : {post.title} </h3>
                   <h5>작성자: {post.author.displayName}</h5>
                   <p>내용 : {post.content}</p>
