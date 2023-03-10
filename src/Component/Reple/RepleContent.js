@@ -33,6 +33,7 @@ const RepleContent = ({ repleItem }) => {
             const body = {
                 listId: id,
                 reple,
+                postId: repleItem.postId,
             };
             axios.post("/api/reple/update", body).then((res) => {
                 if (res.data.success) {
