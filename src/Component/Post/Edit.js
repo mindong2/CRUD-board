@@ -29,7 +29,7 @@ const Edit = () => {
       .then((res) => {
         if (res.data.success) {
           alert("글 수정이 완료되었습니다.");
-          navigate(`/detail/${params.postNum}`);
+          navigate(`/post/${params.postNum}`);
         } else {
           alert("글 수정에 실패하였습니다. 관리자에게 문의해주세요.");
         }
