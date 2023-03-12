@@ -4,13 +4,13 @@ import { useDispatch } from "react-redux";
 import { loginUser, clearUser } from "./Reducer/userSlice";
 import firebase from "./firebase";
 import Heading from "./Component/Heading";
-import List from "./Component/Post/List";
 import Upload from "./Component/Post/Upload";
 import PostArea from "./Component/Post/PostArea";
 import Edit from "./Component/Post/Edit";
 import Login from "./Component/User/Login";
 import Register from "./Component/User/Register";
 import Mypage from "./Component/User/Mypage";
+import Mainpage from "./Mainpage";
 const App = () => {
   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const App = () => {
       <Heading />
 
       <Routes>
-        <Route path="/" element={<List />}></Route>
+        <Route path="/" element={<Mainpage />}></Route>
         <Route path="/upload" element={<Upload />}></Route>
 
         <Route path="/post/:postNum" element={<PostArea />}></Route>
