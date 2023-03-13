@@ -52,7 +52,7 @@ const Login = () => {
                     <button onClick={(e) => LoginFn(e)} type="submit">
                         로그인
                     </button>
-                    <button onClick={() => navigate("/register")} type="button">
+                    <button onClick={() => navigate("/register")} type="button" style={{ marginLeft: "1rem" }}>
                         회원가입
                     </button>
                 </div>

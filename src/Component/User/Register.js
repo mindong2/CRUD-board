@@ -47,7 +47,6 @@ const Register = () => {
       setFlag(false);
       if (res.data.success) {
         alert("회원가입이 완료되었습니다!");
-        navigate("/login");
       } else {
         return alert("회원가입이 실패하였습니다.");
       }
