@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
+import { UploadButtonDiv } from "../../Style/UploadCSS";
+import { RepleForm } from "../../Style/RepleCSS";
 const RepleUpload = ({ postId }) => {
   const [Reple, setReple] = useState("");
   const user = useSelector((state) => state.user);
@@ -28,16 +29,18 @@ const RepleUpload = ({ postId }) => {
     });
   };
   return (
-    <div>
-      <form>
-        <input
+    <>
+      <RepleForm>
+        <textarea
           type="text"
           onChange={(e) => setReple(e.currentTarget.value)}
           value={Reple}
-        />
-        <button onClick={(e) => uploadHandler(e)}>등록</button>
-      </form>
-    </div>
+        ></textarea>
+        <UploadButtonDiv>
+          <button onClick={(e) => uploadHandler(e)}>등록</button>
+        </UploadButtonDiv>
+      </RepleForm>
+    </>
   );
 };
 

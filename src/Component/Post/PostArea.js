@@ -6,37 +6,37 @@ import Detail from "./Detail";
 import RepleArea from "../Reple/RepleArea";
 
 const PostArea = () => {
-    const params = useParams();
-    let [postInfo, setPostInfo] = useState({});
-    let [flag, setFlag] = useState(false);
-    useEffect(() => {
-        let body = {
-            postNum: params.postNum,
-        };
+  const params = useParams();
+  let [postInfo, setPostInfo] = useState({});
+  let [flag, setFlag] = useState(false);
+  useEffect(() => {
+    let body = {
+      postNum: params.postNum,
+    };
 
-        axios
-            .post("/api/post/detail", body)
-            .then((res) => {
-                if (res.data.success) {
-                    setPostInfo(res.data.post);
-                    setFlag(true);
-                }
-            })
-            .catch((err) => console.log(err));
-    }, []);
+    axios
+      .post("/api/post/detail", body)
+      .then((res) => {
+        if (res.data.success) {
+          setPostInfo(res.data.post);
+          setFlag(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-    return (
+  return (
+    <div style={{ marginBottom: "5rem" }}>
+      {flag ? (
         <>
-            {flag ? (
-                <>
-                    <Detail postInfo={postInfo} />
-                    <RepleArea postId={postInfo._id} />
-                </>
-            ) : (
-                <Spinner />
-            )}
+          <Detail postInfo={postInfo} />
+          <RepleArea postId={postInfo._id} />
         </>
-    );
+      ) : (
+        <Spinner />
+      )}
+    </div>
+  );
 };
 
 export default PostArea;

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { UploadDiv, UploadForm, UploadButtonDiv } from "../../Style/UploadCSS";
 import Avatar from "react-avatar";
+import { RepleListDiv } from "../../Style/RepleCSS";
 const RepleContent = ({ repleItem }) => {
   const user = useSelector((state) => state.user);
   const [modalFlag, setModalFlag] = useState(false);
@@ -51,10 +52,14 @@ const RepleContent = ({ repleItem }) => {
   };
 
   return (
-    <div>
+    <RepleListDiv>
       <h5>
-        닉네임:
-        <Avatar size="20" round={true} src={repleItem.author.photoURL}></Avatar>
+        <Avatar
+          size="40"
+          round={true}
+          src={repleItem.author.photoURL}
+          style={{ marginRight: "1rem", boxShadow: "0 0 0 1px #c3c3c3" }}
+        ></Avatar>
         {repleItem.author.displayName}
       </h5>
       {updateFlag ? (
@@ -63,6 +68,7 @@ const RepleContent = ({ repleItem }) => {
             <textarea
               id="reple"
               value={reple}
+              style={{ height: "15rem" }}
               onChange={(e) => {
                 setReple(e.currentTarget.value);
               }}
@@ -101,7 +107,7 @@ const RepleContent = ({ repleItem }) => {
           )}
         </>
       ) : null}
-    </div>
+    </RepleListDiv>
   );
 };
 

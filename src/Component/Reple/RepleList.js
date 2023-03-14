@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RepleContent from "./RepleContent";
+
 import axios from "axios";
 
 const RepleList = ({ postId }) => {
@@ -19,7 +20,7 @@ const RepleList = ({ postId }) => {
   }, []);
 
   return (
-    <div>
+    <div className="reple-content">
       {repleList.map((repleItem, idx) => {
         return <RepleContent repleItem={repleItem} key={idx} />;
       })}
