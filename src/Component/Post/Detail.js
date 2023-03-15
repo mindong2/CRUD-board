@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -26,10 +26,6 @@ const Detail = ({ postInfo }) => {
         }
     };
 
-    useEffect(() => {
-        console.log(postInfo);
-    });
-
     return (
         <>
             <DetailPageDiv>
@@ -39,12 +35,14 @@ const Detail = ({ postInfo }) => {
                     {postInfo.author.displayName}
                 </h3>
                 {postInfo.image ? (
-                    <img
-                        // img등은 외부저장소에 저장 (네이버클라우드 연동)
-                        src={postInfo.image}
-                        alt=""
-                        style={{ maxWidth: "100%", height: "auto" }}
-                    />
+                    <div style={{ textAlign: "center" }}>
+                        <img
+                            // img등은 외부저장소에 저장 (네이버클라우드 연동)
+                            src={postInfo.image}
+                            alt=""
+                            style={{ maxWidth: "100%", height: "auto" }}
+                        />
+                    </div>
                 ) : null}
                 <p>{postInfo.content}</p>
                 {user.uid === postInfo.author.uid ? (

@@ -56,7 +56,6 @@ const Mainpage = () => {
 
     useEffect(() => {
         searchList();
-        console.log(postList);
     }, [sort]);
 
     return (
