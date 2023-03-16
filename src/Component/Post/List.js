@@ -5,12 +5,8 @@ import Avatar from "react-avatar";
 import moment from "moment";
 import "moment/locale/ko";
 const List = ({ postList }) => {
-  const timeout = (create, update) => {
-    if (create !== update) {
-      return moment(update).format(`YYYY.MM.DD (dd) HH:mm (수정됨)`);
-    } else {
-      return moment(create).format(`YYYY.MM.DD (dd) HH:mm`);
-    }
+  const timeout = (create) => {
+    return moment(create).format(`YYYY.MM.DD (dd) HH:mm`);
   };
 
   return (
@@ -49,7 +45,7 @@ const List = ({ postList }) => {
                     </div>
                   </div>
                   <p className="timeout">
-                    {timeout(post.createdAt, post.updatedAt)}
+                    {timeout(post.createdAt)}
                   </p>
                 </Link>
               </li>
